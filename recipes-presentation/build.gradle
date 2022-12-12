@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdk globalConfiguration["compileSdk"]
+
+    defaultConfig {
+        applicationId "com.jorgediaz.emeals"
+        minSdk globalConfiguration["minSdk"]
+        targetSdk globalConfiguration["targetSdk"]
+
+        versionCode globalConfiguration["versionCode"]
+        versionName globalConfiguration["versionName"]
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation project(':recipes-usecases')
+    implementation project(':recipes-data')
+    implementation project(':recipes-domain')
+
+    def presentationDependencies = rootProject.ext.presentationDependencies
+    def presentationTestDependencies = rootProject.ext.presentationTestDependencies
+
+    implementation presentationDependencies.appcompat
+    implementation presentationDependencies.material
+    implementation presentationDependencies.constraintLayout
+    implementation presentationDependencies.lifeCycleLiveData
+    implementation presentationDependencies.lifeCycleViewModelKtx
+
+    implementation presentationTestDependencies.espressoCore
+}
