@@ -13,7 +13,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "eMealsTest"
-include ':recipes-presentation'
+include ':app'
 include ':recipes-usecases'
 include ':recipes-data'
 include ':recipes-domain'
+include ':recipes-presentation'

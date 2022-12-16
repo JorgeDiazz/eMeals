@@ -1,4 +1,4 @@
-package com.jorgediaz.emeals.ui;
+package com.jorgediaz.presentation.ui;
 
 import androidx.lifecycle.ViewModel;
 

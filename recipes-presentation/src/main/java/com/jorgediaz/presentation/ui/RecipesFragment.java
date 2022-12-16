@@ -1,18 +1,17 @@
-package com.jorgediaz.emeals.ui;
-
-import androidx.lifecycle.ViewModelProvider;
+package com.jorgediaz.presentation.ui;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jorgediaz.emeals.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.jorgediaz.presentation.R;
+
 
 public class RecipesFragment extends Fragment {
 

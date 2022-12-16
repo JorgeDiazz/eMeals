@@ -1,11 +1,14 @@
-package com.jorgediaz.emeals;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.jorgediaz.presentation;
 
 import android.os.Bundle;
 
-import com.jorgediaz.emeals.ui.RecipesFragment;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.jorgediaz.presentation.ui.RecipesFragment;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     @Override

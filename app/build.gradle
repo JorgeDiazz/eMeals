@@ -1,0 +1,91 @@
+plugins {
+    id 'com.android.application'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdk globalConfiguration["compileSdk"]
+
+    defaultConfig {
+        applicationId "com.jorgediaz.emeals"
+        minSdk globalConfiguration["minSdk"]
+        targetSdk globalConfiguration["targetSdk"]
+
+        versionCode globalConfiguration["versionCode"]
+        versionName globalConfiguration["versionName"]
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            testCoverageEnabled true
+        }
+    }
+
+    flavorDimensions "version", "target"
+    productFlavors {
+        staging {
+            dimension "version"
+            applicationIdSuffix ".staging"
+            versionNameSuffix "-Staging"
+            manifestPlaceholders = [scheme:"emeals.staging"]
+            buildConfigField("String", "SCHEME", "\"${manifestPlaceholders["scheme"]}\"")
+            buildConfigField("String", "BASE_URL", "\"http://emeals-menubuilder-public.s3.amazonaws.com/\"")
+        }
+        production {
+            dimension "version"
+            manifestPlaceholders = [scheme:"emeals.production"]
+            buildConfigField("String", "SCHEME", "\"${manifestPlaceholders["scheme"]}\"")
+            buildConfigField("String", "BASE_URL", "\"http://emeals-menubuilder-public.s3.amazonaws.com/\"")
+        }
+        internal {
+            dimension "target"
+        }
+        external {
+            dimension "target"
+        }
+    }
+
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        if (names.contains("external") && names.contains("staging")) {
+            setIgnore(true)
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation project(':recipes-presentation')
+    implementation project(':recipes-usecases')
+    implementation project(':recipes-data')
+    implementation project(':recipes-domain')
+
+    def frameworkDependencies = rootProject.ext.frameworkDependencies
+    implementation frameworkDependencies.multidex
+    implementation frameworkDependencies.daggerHilt
+    annotationProcessor frameworkDependencies.daggerHiltAndroidCompiler
+    annotationProcessor frameworkDependencies.kotlinMetadata
+
+    implementation frameworkDependencies.retrofit
+    implementation frameworkDependencies.retrofitMoshi
+    implementation platform(frameworkDependencies.okHttpBoM)
+    implementation frameworkDependencies.okHttp
+    implementation frameworkDependencies.okHttpInterceptor
+
+    implementation frameworkDependencies.timber
+
+}

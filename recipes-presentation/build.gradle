@@ -1,5 +1,6 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -8,14 +9,11 @@ android {
     compileSdk globalConfiguration["compileSdk"]
 
     defaultConfig {
-        applicationId "com.jorgediaz.emeals"
         minSdk globalConfiguration["minSdk"]
         targetSdk globalConfiguration["targetSdk"]
 
-        versionCode globalConfiguration["versionCode"]
-        versionName globalConfiguration["versionName"]
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -44,5 +42,9 @@ dependencies {
     implementation presentationDependencies.lifeCycleLiveData
     implementation presentationDependencies.lifeCycleViewModelKtx
 
-    implementation presentationTestDependencies.espressoCore
+    implementation presentationDependencies.daggerHilt
+    annotationProcessor presentationDependencies.daggerHiltAndroidCompiler
+    annotationProcessor presentationDependencies.kotlinMetadata
+
+    androidTestImplementation presentationTestDependencies.espressoCore
 }

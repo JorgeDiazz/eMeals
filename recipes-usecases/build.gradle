@@ -5,6 +5,11 @@ plugins {
 dependencies {
     implementation project(':recipes-data')
     implementation project(':recipes-domain')
+
+    def useCasesDependencies = rootProject.ext.useCasesDependencies
+    def useCasesTestDependencies = rootProject.ext.useCasesTestDependencies
+
+    testImplementation useCasesTestDependencies.jUnit
 }
 
 java {
