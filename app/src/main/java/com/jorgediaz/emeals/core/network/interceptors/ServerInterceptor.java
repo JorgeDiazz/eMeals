@@ -3,7 +3,7 @@ package com.jorgediaz.emeals.core.network.interceptors;
 import androidx.annotation.NonNull;
 
 import com.jorgediaz.emeals.base.data.HttpObject;
-import com.jorgediaz.emeals.core.interfaces.Logger;
+import com.jorgediaz.presentation.core.Logger;
 import com.jorgediaz.emeals.core.network.exceptions.NoConnectionException;
 import com.jorgediaz.emeals.core.network.exceptions.ServerException;
 

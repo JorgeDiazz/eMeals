@@ -1,4 +1,4 @@
-package com.jorgediaz.presentation.ui;
+package com.jorgediaz.presentation.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,21 +11,25 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.jorgediaz.presentation.R;
+import com.jorgediaz.presentation.ui.viewmodels.RecipesViewModel;
+
+import dagger.hilt.android.AndroidEntryPoint;
 
 
-public class RecipesFragment extends Fragment {
+@AndroidEntryPoint
+public class RecipeDetailsFragment extends Fragment {
 
     private RecipesViewModel mViewModel;
 
-    public static RecipesFragment newInstance() {
-        return new RecipesFragment();
+    public static RecipeDetailsFragment newInstance() {
+        return new RecipeDetailsFragment();
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        return inflater.inflate(R.layout.fragment_recipe_details, container, false);
     }
 
     @Override

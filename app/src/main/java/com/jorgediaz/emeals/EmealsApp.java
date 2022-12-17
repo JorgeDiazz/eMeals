@@ -14,8 +14,6 @@ import dagger.hilt.android.HiltAndroidApp;
 @HiltAndroidApp
 public class EmealsApp extends MultiDexApplication {
 
-    private AppComponent appComponent;
-
     public void onCreate() {
         initializeStrictMode();
         initializeComponent();
@@ -47,6 +45,6 @@ public class EmealsApp extends MultiDexApplication {
     }
 
     private void initializeComponent() {
-        appComponent = EntryPoints.get(this, AppComponent.class);
+        EntryPoints.get(this, AppComponent.class);
     }
 }

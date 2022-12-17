@@ -1,4 +1,4 @@
-package com.jorgediaz.emeals.core.interfaces;
+package com.jorgediaz.presentation.core;
 
 public interface Logger {
     void v(String message, Throwable throwable);

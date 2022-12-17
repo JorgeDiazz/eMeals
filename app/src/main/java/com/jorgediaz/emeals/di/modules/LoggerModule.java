@@ -2,7 +2,7 @@ package com.jorgediaz.emeals.di.modules;
 
 import com.jorgediaz.emeals.logger.EMealsDebugTree;
 import com.jorgediaz.emeals.logger.EMealsLogger;
-import com.jorgediaz.emeals.core.interfaces.Logger;
+import com.jorgediaz.presentation.core.Logger;
 
 import javax.inject.Singleton;
 

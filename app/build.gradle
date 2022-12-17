@@ -37,15 +37,15 @@ android {
             dimension "version"
             applicationIdSuffix ".staging"
             versionNameSuffix "-Staging"
-            manifestPlaceholders = [scheme:"emeals.staging"]
+            manifestPlaceholders = [scheme: "emeals.staging"]
             buildConfigField("String", "SCHEME", "\"${manifestPlaceholders["scheme"]}\"")
-            buildConfigField("String", "BASE_URL", "\"http://emeals-menubuilder-public.s3.amazonaws.com/\"")
+            buildConfigField("String", "BASE_URL", "\"https://emeals-menubuilder-public.s3.amazonaws.com/\"")
         }
         production {
             dimension "version"
-            manifestPlaceholders = [scheme:"emeals.production"]
+            manifestPlaceholders = [scheme: "emeals.production"]
             buildConfigField("String", "SCHEME", "\"${manifestPlaceholders["scheme"]}\"")
-            buildConfigField("String", "BASE_URL", "\"http://emeals-menubuilder-public.s3.amazonaws.com/\"")
+            buildConfigField("String", "BASE_URL", "\"https://emeals-menubuilder-public.s3.amazonaws.com/\"")
         }
         internal {
             dimension "target"
@@ -82,10 +82,18 @@ dependencies {
 
     implementation frameworkDependencies.retrofit
     implementation frameworkDependencies.retrofitMoshi
+    implementation frameworkDependencies.moshi
+    annotationProcessor "com.github.nename0:moshi-java-codegen:1.1.1"
     implementation platform(frameworkDependencies.okHttpBoM)
     implementation frameworkDependencies.okHttp
     implementation frameworkDependencies.okHttpInterceptor
 
     implementation frameworkDependencies.timber
+
+    implementation frameworkDependencies.retrofitRxJava
+
+    implementation frameworkDependencies.room
+    implementation frameworkDependencies.roomRxJava
+    annotationProcessor frameworkDependencies.roomCompiler
 
 }

@@ -4,6 +4,11 @@ plugins {
 
 dependencies {
     implementation project(':recipes-domain')
+
+    def dataDependencies = rootProject.ext.dataDependencies
+
+    implementation dataDependencies.javaInject
+    implementation dataDependencies.rxJava
 }
 
 java {

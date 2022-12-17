@@ -12,13 +12,21 @@ ext {
 
     multidex = "2.0.1"
 
+    javaInject = "1"
     daggerHilt = "2.44"
     kotlinMetadata = "0.5.0"
 
     okHttpBoM = "4.10.0"
     retrofit = "2.9.0"
+    moshi = "1.14.0"
 
     timber = "4.7.1"
+
+    navigationVersion = "2.5.3"
+
+    rxJava = "3.0.0"
+
+    room = "2.4.0-rc01"
 
     frameworkDependencies = [
             multidex                 : "androidx.multidex:multidex:${multidex}",
@@ -26,11 +34,16 @@ ext {
             daggerHiltAndroidCompiler: "com.google.dagger:hilt-android-compiler:${daggerHilt}",
             retrofit                 : "com.squareup.retrofit2:retrofit:${retrofit}",
             retrofitMoshi            : "com.squareup.retrofit2:converter-moshi:${retrofit}",
+            moshi                    : "com.squareup.moshi:moshi:${moshi}",
             okHttpBoM                : "com.squareup.okhttp3:okhttp-bom:${okHttpBoM}",
             okHttp                   : "com.squareup.okhttp3:okhttp",
             okHttpInterceptor        : "com.squareup.okhttp3:logging-interceptor",
             kotlinMetadata           : "org.jetbrains.kotlinx:kotlinx-metadata-jvm:${kotlinMetadata}",
-            timber                   : "com.jakewharton.timber:timber:${timber}"
+            timber                   : "com.jakewharton.timber:timber:${timber}",
+            room                     : "androidx.room:room-runtime:${room}",
+            roomCompiler             : "androidx.room:room-compiler:${room}",
+            roomRxJava               : "androidx.room:room-rxjava3:${room}",
+            retrofitRxJava           : "com.github.akarnokd:rxjava3-retrofit-adapter:${rxJava}"
     ]
 
     presentationDependencies = [
@@ -41,7 +54,10 @@ ext {
             lifeCycleViewModelKtx    : "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifeCycle}",
             daggerHilt               : "com.google.dagger:hilt-android:${daggerHilt}",
             daggerHiltAndroidCompiler: "com.google.dagger:hilt-android-compiler:${daggerHilt}",
-            kotlinMetadata           : "org.jetbrains.kotlinx:kotlinx-metadata-jvm:${kotlinMetadata}"
+            kotlinMetadata           : "org.jetbrains.kotlinx:kotlinx-metadata-jvm:${kotlinMetadata}",
+            navigationFragment       : "androidx.navigation:navigation-fragment:${navigationVersion}",
+            navigationUi             : "androidx.navigation:navigation-ui:${navigationVersion}",
+            rxAndroid                : "io.reactivex.rxjava3:rxandroid:${rxJava}"
     ]
 
     presentationTestDependencies = [
@@ -49,10 +65,17 @@ ext {
     ]
 
     useCasesDependencies = [
+            javaInject: "javax.inject:javax.inject:${javaInject}",
+            rxJava    : "io.reactivex.rxjava3:rxjava:${rxJava}"
     ]
 
     useCasesTestDependencies = [
             jUnit: "junit:junit:${jUnit}"
+    ]
+
+    dataDependencies = [
+            javaInject: "javax.inject:javax.inject:${javaInject}",
+            rxJava    : "io.reactivex.rxjava3:rxjava:${rxJava}"
     ]
 }
 

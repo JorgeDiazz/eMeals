@@ -2,11 +2,12 @@ package com.jorgediaz.emeals.di.modules;
 
 
 import com.jorgediaz.emeals.BuildConfig;
-import com.jorgediaz.emeals.core.interfaces.Logger;
 import com.jorgediaz.emeals.core.network.interceptors.ServerInterceptor;
 import com.jorgediaz.emeals.di.annotations.BasePath;
 import com.jorgediaz.emeals.di.annotations.RetrofitEMeals;
 import com.jorgediaz.emeals.di.annotations.RetrofitNullSerializationEnabled;
+import com.jorgediaz.presentation.core.Logger;
+import com.squareup.moshi.Moshi;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -18,6 +19,7 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.components.SingletonComponent;
+import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
 import kotlin.jvm.JvmSuppressWildcards;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -84,6 +86,7 @@ public class NetworkModule {
                 .client(okHttpClient)
                 .baseUrl(basePath)
                 .addConverterFactory(MoshiConverterFactory.create().withNullSerialization())
+                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
                 .build();
     }
 }

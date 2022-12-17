@@ -1,6 +1,6 @@
 package com.jorgediaz.emeals.logger;
 
-import com.jorgediaz.emeals.core.interfaces.Logger;
+import com.jorgediaz.presentation.core.Logger;
 
 import javax.inject.Inject;
 

@@ -9,6 +9,9 @@ dependencies {
     def useCasesDependencies = rootProject.ext.useCasesDependencies
     def useCasesTestDependencies = rootProject.ext.useCasesTestDependencies
 
+    implementation useCasesDependencies.javaInject
+    implementation useCasesDependencies.rxJava
+
     testImplementation useCasesTestDependencies.jUnit
 }
 

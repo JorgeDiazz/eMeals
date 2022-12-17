@@ -22,6 +22,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -45,6 +50,12 @@ dependencies {
     implementation presentationDependencies.daggerHilt
     annotationProcessor presentationDependencies.daggerHiltAndroidCompiler
     annotationProcessor presentationDependencies.kotlinMetadata
+
+    implementation presentationDependencies.navigationFragment
+    implementation presentationDependencies.navigationUi
+
+    implementation presentationDependencies.rxAndroid
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
 
     androidTestImplementation presentationTestDependencies.espressoCore
 }

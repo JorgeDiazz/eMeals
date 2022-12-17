@@ -1,24 +1,28 @@
 package com.jorgediaz.presentation;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.jorgediaz.presentation.ui.RecipesFragment;
+import com.jorgediaz.presentation.databinding.ActivityMainBinding;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
+/**
+ * Represents main activity.
+ * <p>
+ * This is the orchestrator of app's views.
+ */
 @AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, RecipesFragment.newInstance())
-                    .commitNow();
-        }
+
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
     }
 }
