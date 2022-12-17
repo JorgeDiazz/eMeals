@@ -117,7 +117,7 @@ public class RecipesLocalDataSource implements IRecipesLocalDataSource {
         recipeRoom.sideServings = recipe.getSideRecipe().getServings();
         recipeRoom.sideStyle = recipe.getSideRecipe().getStyle();
         recipeRoom.sideTitle = recipe.getSideRecipe().getTitle();
-        recipeRoom.sideNutritionalInformation = jsonAdapterNutritionalInformation.toJson(recipe.getSideRecipe().getNutritionalInformationList());
+        recipeRoom.sideNutritionalInformation = jsonAdapterNutritionalInformation.toJson(recipe.getSideRecipe().getNutritionalInformationUiModelList());
         recipeRoom.sideIngredients = jsonAdapterString.toJson(recipe.getSideRecipe().getIngredients());
         recipeRoom.sideInstructions = jsonAdapterString.toJson(recipe.getSideRecipe().getInstructions());
 

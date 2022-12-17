@@ -35,7 +35,7 @@ public class SideRecipe {
         this.title = title;
     }
 
-    public List<NutritionalInformation> getNutritionalInformationList() {
+    public List<NutritionalInformation> getNutritionalInformationUiModelList() {
         return nutritionalInformationList;
     }
 

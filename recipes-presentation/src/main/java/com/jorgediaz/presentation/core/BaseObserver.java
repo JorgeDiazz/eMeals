@@ -1,21 +1,17 @@
 package com.jorgediaz.presentation.core;
 
-import com.jorgediaz.domain.Recipe;
-
-import java.util.List;
-
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 
-public class BaseObserver implements Observer<List<Recipe>> {
+public class BaseObserver<T> implements Observer<T> {
     @Override
     public void onSubscribe(@NonNull Disposable d) {
         // no-op by default
     }
 
     @Override
-    public void onNext(@NonNull List<Recipe> recipes) {
+    public void onNext(@NonNull T t) {
         // no-op by default
     }
 

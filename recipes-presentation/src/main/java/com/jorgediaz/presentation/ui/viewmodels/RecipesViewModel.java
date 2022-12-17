@@ -4,12 +4,16 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.jorgediaz.domain.NutritionalInformation;
 import com.jorgediaz.domain.Recipe;
+import com.jorgediaz.domain.SideRecipe;
 import com.jorgediaz.domain.qualifiers.GetRecipes;
 import com.jorgediaz.presentation.core.BaseObserver;
 import com.jorgediaz.presentation.core.Event;
 import com.jorgediaz.presentation.core.Logger;
+import com.jorgediaz.presentation.ui.model.NutritionalInformationUiModel;
 import com.jorgediaz.presentation.ui.model.RecipeUiModel;
+import com.jorgediaz.presentation.ui.model.SideRecipeUiModel;
 import com.jorgediaz.presentation.ui.news.RecipesNews;
 import com.jorgediaz.usecases.interfaces.ObservableUseCase;
 
@@ -48,10 +52,11 @@ public class RecipesViewModel extends ViewModel {
         getRecipesUseCase.execute(null)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver() {
+                .map(this::toRecipeUiModelList)
+                .subscribe(new BaseObserver<List<RecipeUiModel>>() {
                     @Override
-                    public void onNext(List<Recipe> recipes) {
-                        _liveData.setValue(toRecipeUiModelList(recipes));
+                    public void onNext(List<RecipeUiModel> recipes) {
+                        _liveData.setValue(recipes);
                     }
 
                     @Override
@@ -75,7 +80,43 @@ public class RecipesViewModel extends ViewModel {
     }
 
     private RecipeUiModel toRecipeUiModel(Recipe recipe) {
-        return new RecipeUiModel(recipe.getId());
+        return new RecipeUiModel(
+                recipe.getId(),
+                recipe.getPrimaryPictureUrl(),
+                recipe.getPrimaryPictureUrlMedium(),
+                recipe.getRating(),
+                recipe.getServings(),
+                recipe.getStyle(),
+                recipe.getTitle(),
+                toNutritionalInformationList(recipe.getNutritionalInformationList()),
+                recipe.getIngredients(),
+                recipe.getInstructions(),
+                toSideRecipeUiModel(recipe.getSideRecipe())
+        );
     }
 
+    private List<NutritionalInformationUiModel> toNutritionalInformationList(List<NutritionalInformation> nutritionalInformationList) {
+        List<NutritionalInformationUiModel> nutritionalInformationUiModel = new ArrayList<>();
+
+        for (NutritionalInformation nutritionalInformation : nutritionalInformationList) {
+            nutritionalInformationUiModel.add(toNutritionalInformationUiModel(nutritionalInformation));
+        }
+
+        return nutritionalInformationUiModel;
+    }
+
+    private NutritionalInformationUiModel toNutritionalInformationUiModel(NutritionalInformation nutritionalInformation) {
+        return new NutritionalInformationUiModel(nutritionalInformation.getName(), nutritionalInformation.getValue(), nutritionalInformation.getUnit());
+    }
+
+    private SideRecipeUiModel toSideRecipeUiModel(SideRecipe sideRecipe) {
+        return new SideRecipeUiModel(
+                sideRecipe.getServings(),
+                sideRecipe.getStyle(),
+                sideRecipe.getTitle(),
+                toNutritionalInformationList(sideRecipe.getNutritionalInformationUiModelList()),
+                sideRecipe.getIngredients(),
+                sideRecipe.getInstructions()
+        );
+    }
 }
