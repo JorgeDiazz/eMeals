@@ -14,6 +14,7 @@ import com.jorgediaz.emeals.datasources.remote.retrofit.RecipesService;
 import com.jorgediaz.emeals.datasources.room.RecipesLocalDataSource;
 import com.jorgediaz.emeals.datasources.room.database.RecipesDatabase;
 import com.jorgediaz.emeals.di.annotations.RetrofitNullSerializationEnabled;
+import com.squareup.moshi.Moshi;
 
 import javax.inject.Singleton;
 
@@ -49,8 +50,8 @@ public class RecipesRepositoryModule {
 
     @Provides
     @Singleton
-    IRecipesLocalDataSource providesRecipesLocalDataSource(RoomDatabase database) {
-        return new RecipesLocalDataSource((RecipesDatabase) database);
+    IRecipesLocalDataSource providesRecipesLocalDataSource(RoomDatabase database, Moshi moshi) {
+        return new RecipesLocalDataSource((RecipesDatabase) database, moshi);
     }
 
     @Provides

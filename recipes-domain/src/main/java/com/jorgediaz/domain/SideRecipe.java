@@ -2,50 +2,14 @@ package com.jorgediaz.domain;
 
 import java.util.List;
 
-public class Recipe {
-    private int id;
-    private String primaryPictureUrl;
-    private String primaryPictureUrlMedium;
-    private Double rating;
+public class SideRecipe {
+
     private int servings;
     private String style;
     private String title;
     private List<NutritionalInformation> nutritionalInformationList;
     private List<String> ingredients;
     private List<String> instructions;
-    private SideRecipe sideRecipe;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getPrimaryPictureUrl() {
-        return primaryPictureUrl;
-    }
-
-    public void setPrimaryPictureUrl(String primaryPictureUrl) {
-        this.primaryPictureUrl = primaryPictureUrl;
-    }
-
-    public String getPrimaryPictureUrlMedium() {
-        return primaryPictureUrlMedium;
-    }
-
-    public void setPrimaryPictureUrlMedium(String primaryPictureUrlMedium) {
-        this.primaryPictureUrlMedium = primaryPictureUrlMedium;
-    }
-
-    public Double getRating() {
-        return rating;
-    }
-
-    public void setRating(Double rating) {
-        this.rating = rating;
-    }
 
     public int getServings() {
         return servings;
@@ -93,13 +57,5 @@ public class Recipe {
 
     public void setInstructions(List<String> instructions) {
         this.instructions = instructions;
-    }
-
-    public SideRecipe getSideRecipe() {
-        return sideRecipe;
-    }
-
-    public void setSideRecipe(SideRecipe sideRecipe) {
-        this.sideRecipe = sideRecipe;
     }
 }

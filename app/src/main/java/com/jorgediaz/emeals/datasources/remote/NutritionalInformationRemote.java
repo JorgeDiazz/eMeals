@@ -11,6 +11,8 @@ public class NutritionalInformationRemote {
     private String name;
     @Json(name = "name_without_unit")
     private String nameWithoutUnit;
+    @Json(name = "value")
+    private int value;
     @Json(name = "order")
     private int order;
     @Json(name = "should_combine")
@@ -42,6 +44,14 @@ public class NutritionalInformationRemote {
 
     public void setNameWithoutUnit(String nameWithoutUnit) {
         this.nameWithoutUnit = nameWithoutUnit;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 
     public int getOrder() {

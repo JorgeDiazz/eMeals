@@ -77,6 +77,12 @@ public class NetworkModule {
 
     @Provides
     @Singleton
+    public Moshi providesMoshi() {
+        return new Moshi.Builder().build();
+    }
+
+    @Provides
+    @Singleton
     @RetrofitNullSerializationEnabled
     public Retrofit providesRetrofitNullSerializationEnabled(
             @RetrofitEMeals OkHttpClient okHttpClient,

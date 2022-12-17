@@ -4,6 +4,7 @@ import com.squareup.moshi.Json;
 import com.squareup.moshi.JsonClass;
 
 import java.util.List;
+import java.util.Map;
 
 @JsonClass(generateAdapter = true, generator = "java")
 public class SideRemote {
@@ -14,9 +15,9 @@ public class SideRemote {
     @Json(name = "cook_time")
     private int cookTime;
     @Json(name = "ingredients")
-    private String ingredients;
+    private Map<String, String> ingredients;
     @Json(name = "instructions")
-    private String instructions;
+    private Map<String, String> instructions;
     @Json(name = "notes")
     private String notes;
     @Json(name = "nutritional_information")
@@ -58,19 +59,19 @@ public class SideRemote {
         this.cookTime = cookTime;
     }
 
-    public String getIngredients() {
+    public Map<String, String> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(String ingredients) {
+    public void setIngredients(Map<String, String> ingredients) {
         this.ingredients = ingredients;
     }
 
-    public String getInstructions() {
+    public Map<String, String> getInstructions() {
         return instructions;
     }
 
-    public void setInstructions(String instructions) {
+    public void setInstructions(Map<String, String> instructions) {
         this.instructions = instructions;
     }
 
