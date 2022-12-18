@@ -7,6 +7,7 @@ import androidx.room.Query;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Observable;
 
 /**
@@ -21,6 +22,6 @@ public interface RecipesDao {
     @Query("SELECT * FROM recipes")
     Observable<List<RecipeRoom>> getRecipes();
 
-    @Query("DELETE FROM recipes")
-    void clearRecipes();
+    @Query("UPDATE recipes SET title = :newTitle WHERE id = :recipeId")
+    Completable updateRecipeTitle(int recipeId, String newTitle);
 }

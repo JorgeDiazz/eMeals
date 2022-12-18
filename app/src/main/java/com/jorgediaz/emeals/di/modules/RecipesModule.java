@@ -2,8 +2,12 @@ package com.jorgediaz.emeals.di.modules;
 
 import com.jorgediaz.domain.Recipe;
 import com.jorgediaz.domain.qualifiers.GetRecipes;
+import com.jorgediaz.domain.qualifiers.UpdateRecipeTitle;
 import com.jorgediaz.usecases.GetRecipesUseCase;
+import com.jorgediaz.usecases.UpdateRecipeTitleUseCase;
 import com.jorgediaz.usecases.interfaces.ObservableUseCase;
+import com.jorgediaz.usecases.interfaces.SingleUseCase;
+import com.jorgediaz.usecases.utils.Pair;
 
 import java.util.List;
 
@@ -22,4 +26,9 @@ public abstract class RecipesModule {
     @GetRecipes
     @Singleton
     abstract ObservableUseCase<Void, List<Recipe>> bindsGetRecipesUseCase(GetRecipesUseCase useCase);
+
+    @Binds
+    @UpdateRecipeTitle
+    @Singleton
+    abstract SingleUseCase<Pair<Integer, String>, String> bindsUpdateRecipeTitleUseCase(UpdateRecipeTitleUseCase useCase);
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 
 /**
  * Represents the repository for recipes.
@@ -36,5 +37,10 @@ public class RecipesRepository implements IRecipesRepository {
 
                     return Observable.just(recipes);
                 });
+    }
+
+    @Override
+    public Single<String> updateRecipeTitle(int recipeId, String newTitle) {
+        return recipesLocalDataSource.updateRecipeTitle(recipeId, newTitle);
     }
 }

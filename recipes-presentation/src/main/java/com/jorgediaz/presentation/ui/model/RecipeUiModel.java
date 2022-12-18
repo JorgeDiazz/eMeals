@@ -16,7 +16,7 @@ public class RecipeUiModel implements Parcelable {
     private final String time;
     private final String servings;
     private final String style;
-    private final String title;
+    private String title;
     private final List<NutritionalInformationUiModel> nutritionalInformationList;
     private final List<String> ingredients;
     private final List<String> instructions;
@@ -61,12 +61,17 @@ public class RecipeUiModel implements Parcelable {
         return servings;
     }
 
+
     public String getStyle() {
         return style;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public List<NutritionalInformationUiModel> getNutritionalInformationList() {

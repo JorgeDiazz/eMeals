@@ -16,11 +16,18 @@ import androidx.core.view.MenuHost;
 import androidx.core.view.MenuProvider;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.jorgediaz.presentation.R;
+import com.jorgediaz.presentation.core.EventObserver;
 import com.jorgediaz.presentation.databinding.FragmentRecipeDetailsBinding;
 import com.jorgediaz.presentation.ui.model.RecipeUiModel;
+import com.jorgediaz.presentation.ui.news.RecipeDetailsNews;
+import com.jorgediaz.presentation.ui.viewmodels.RecipeDetailsViewModel;
+
+import java.util.Objects;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -29,6 +36,8 @@ import dagger.hilt.android.AndroidEntryPoint;
 public class RecipeDetailsFragment extends DialogFragment implements MenuProvider {
 
     private FragmentRecipeDetailsBinding binding;
+    private RecipeDetailsViewModel viewModel;
+
     private RecipeUiModel recipeUiModel;
 
     @Override
@@ -50,6 +59,8 @@ public class RecipeDetailsFragment extends DialogFragment implements MenuProvide
         super.onViewCreated(view, savedInstanceState);
         initializeProperties();
         initializeView();
+        initializeViewModel();
+        initializeSubscription();
     }
 
     private void initializeProperties() {
@@ -83,6 +94,10 @@ public class RecipeDetailsFragment extends DialogFragment implements MenuProvide
         binding.mainToolbar.setBackButtonListener(this::popFragment);
     }
 
+    private void initializeViewModel() {
+        viewModel = new ViewModelProvider(this).get(RecipeDetailsViewModel.class);
+    }
+
     private void onEditTitleActionPressed() {
         showEditTitleAlertDialog();
     }
@@ -98,7 +113,9 @@ public class RecipeDetailsFragment extends DialogFragment implements MenuProvide
 
         builder.setPositiveButton(android.R.string.ok, (dialog, which) -> {
             dialog.dismiss();
-            //m_Text = input.getText().toString();
+
+            String newRecipeTitle = Objects.requireNonNull(input.getText()).toString();
+            viewModel.updateRecipeTitle(recipeUiModel.getId(), newRecipeTitle);
         });
 
         builder.setNegativeButton(android.R.string.cancel, (dialog, which) -> dialog.cancel());
@@ -108,6 +125,24 @@ public class RecipeDetailsFragment extends DialogFragment implements MenuProvide
 
     private void popFragment() {
         requireActivity().onBackPressed();
+    }
+
+    private void initializeSubscription() {
+        viewModel.news.observe(getViewLifecycleOwner(), new EventObserver<>(this::handleNews));
+    }
+
+    private void handleNews(RecipeDetailsNews recipeDetailsNews) {
+        if (recipeDetailsNews instanceof RecipeDetailsNews.RecipeTitleUpdatedSuccesfully) {
+            String newRecipeTitle = ((RecipeDetailsNews.RecipeTitleUpdatedSuccesfully) recipeDetailsNews).getNewRecipeTitle();
+            updateRecipeTitle(newRecipeTitle);
+        } else if (recipeDetailsNews instanceof RecipeDetailsNews.ErrorUpdatingRecipeTitle) {
+            Snackbar.make(binding.mainLayout, ((RecipeDetailsNews.ErrorUpdatingRecipeTitle) recipeDetailsNews).getMessage(), Snackbar.LENGTH_LONG).show();
+        }
+    }
+
+    private void updateRecipeTitle(String newRecipeTitle) {
+        recipeUiModel.setTitle(newRecipeTitle);
+        binding.mainToolbar.setTitle(newRecipeTitle);
     }
 
     @Override

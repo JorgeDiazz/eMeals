@@ -17,6 +17,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 
 public class RecipesLocalDataSource implements IRecipesLocalDataSource {
 
@@ -37,6 +38,12 @@ public class RecipesLocalDataSource implements IRecipesLocalDataSource {
     @Override
     public Observable<List<Recipe>> getRecipes() {
         return recipesDatabase.getRecipesDao().getRecipes().map(this::toRecipeList);
+    }
+
+    @Override
+    public Single<String> updateRecipeTitle(int recipeId, String newTitle) {
+        return recipesDatabase.getRecipesDao().updateRecipeTitle(recipeId, newTitle)
+                .andThen(Single.just(newTitle));
     }
 
     private List<Recipe> toRecipeList(List<RecipeRoom> recipeRoomList) throws IOException {
