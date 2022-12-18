@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,8 +32,6 @@ public class RecipesFragment extends Fragment implements RecipesAdapter.OnRecipe
 
     private FragmentRecipesBinding binding;
     private RecipesViewModel viewModel;
-    private RecyclerView recipesRecyclerView;
-    private RecipesAdapter recipesAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -75,8 +75,8 @@ public class RecipesFragment extends Fragment implements RecipesAdapter.OnRecipe
     }
 
     private void setUpRecipesRecyclerView(List<RecipeUiModel> recipeUiModelList) {
-        recipesRecyclerView = binding.recyclerViewRecipes;
-        recipesAdapter = new RecipesAdapter(recipeUiModelList, this, getContext());
+        RecyclerView recipesRecyclerView = binding.recyclerViewRecipes;
+        RecipesAdapter recipesAdapter = new RecipesAdapter(recipeUiModelList, this, getContext());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -103,6 +103,7 @@ public class RecipesFragment extends Fragment implements RecipesAdapter.OnRecipe
 
     @Override
     public void onRecipeClicked(RecipeUiModel recipeUiModel) {
-
+        NavDirections action = RecipesFragmentDirections.actionRecipesFragmentToRecipeDetailsFragment(recipeUiModel);
+        Navigation.findNavController(binding.getRoot()).navigate(action);
     }
 }

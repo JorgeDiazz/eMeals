@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
@@ -45,7 +46,7 @@ dependencies {
     implementation presentationDependencies.material
     implementation presentationDependencies.constraintLayout
     implementation presentationDependencies.lifeCycleLiveData
-    implementation presentationDependencies.lifeCycleViewModelKtx
+    implementation presentationDependencies.lifeCycleViewModel
 
     implementation presentationDependencies.daggerHilt
     annotationProcessor presentationDependencies.daggerHiltAndroidCompiler

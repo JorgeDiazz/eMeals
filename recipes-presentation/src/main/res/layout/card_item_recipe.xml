@@ -21,8 +21,6 @@
             android:layout_height="match_parent"
             android:foreground="@drawable/bg_fade_recipe_image"
             android:scaleType="centerCrop"
-            app:placeholderImage="@drawable/ic_default_recipe"
-            app:placeholderImageScaleType="centerCrop"
             tools:ignore="ContentDescription" />
 
         <ImageView
@@ -106,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_small_800"
             android:fontFamily="@font/poppins_semibold"
-            android:maxLines="2"
+            android:maxLines="4"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_normal_600"
             app:layout_constraintBottom_toTopOf="@id/textView_recipe_style"

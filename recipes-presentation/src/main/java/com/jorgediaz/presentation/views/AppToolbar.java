@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.MenuRes;
 import androidx.appcompat.widget.Toolbar;
@@ -39,6 +41,7 @@ public class AppToolbar extends LinearLayout {
         setBackButton(showBackButton);
 
         styleToolbarWithLightTheme();
+        supportMultipleLinesTitle();
 
         attributes.recycle();
     }
@@ -65,8 +68,23 @@ public class AppToolbar extends LinearLayout {
 
     public void setTitle(String title) {
         setPaddingForToolbar();
+        supportMultipleLinesTitle();
 
         toolbar.setTitle(title == null ? "" : title);
+    }
+
+    private void supportMultipleLinesTitle() {
+        for (int i = 0; i < toolbar.getChildCount(); i++) {
+            View child = toolbar.getChildAt(i);
+
+            if (child instanceof TextView) {
+                ((TextView) child).setSingleLine(false);
+            }
+        }
+    }
+
+    public void setSubtitle(String subtitle) {
+        toolbar.setSubtitle(subtitle == null ? "" : subtitle);
     }
 
     public void setOnMenuItemClickListener(Toolbar.OnMenuItemClickListener listener) {
