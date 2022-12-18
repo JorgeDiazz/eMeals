@@ -15,6 +15,8 @@ public class RecipeRoom {
     public String primaryPictureUrlMedium;
     @ColumnInfo(name = "rating")
     public Double rating;
+    @ColumnInfo(name = "time")
+    public int time;
     @ColumnInfo(name = "servings")
     public int servings;
     @ColumnInfo(name = "style")

@@ -96,4 +96,5 @@ dependencies {
     implementation frameworkDependencies.roomRxJava
     annotationProcessor frameworkDependencies.roomCompiler
 
+    implementation frameworkDependencies.fresco
 }

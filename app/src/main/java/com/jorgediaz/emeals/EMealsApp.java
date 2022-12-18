@@ -6,17 +6,19 @@ import android.os.StrictMode.VmPolicy;
 
 import androidx.multidex.MultiDexApplication;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.jorgediaz.emeals.di.components.AppComponent;
 
 import dagger.hilt.EntryPoints;
 import dagger.hilt.android.HiltAndroidApp;
 
 @HiltAndroidApp
-public class EmealsApp extends MultiDexApplication {
+public class EMealsApp extends MultiDexApplication {
 
     public void onCreate() {
         initializeStrictMode();
         initializeComponent();
+        initializeLibraries();
         super.onCreate();
     }
 
@@ -46,5 +48,9 @@ public class EmealsApp extends MultiDexApplication {
 
     private void initializeComponent() {
         EntryPoints.get(this, AppComponent.class);
+    }
+
+    private void initializeLibraries() {
+        Fresco.initialize(this);
     }
 }

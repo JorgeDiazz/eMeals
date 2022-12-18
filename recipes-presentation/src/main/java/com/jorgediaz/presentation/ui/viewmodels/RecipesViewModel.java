@@ -8,6 +8,8 @@ import com.jorgediaz.domain.NutritionalInformation;
 import com.jorgediaz.domain.Recipe;
 import com.jorgediaz.domain.SideRecipe;
 import com.jorgediaz.domain.qualifiers.GetRecipes;
+import com.jorgediaz.presentation.R;
+import com.jorgediaz.presentation.core.AppResources;
 import com.jorgediaz.presentation.core.BaseObserver;
 import com.jorgediaz.presentation.core.Event;
 import com.jorgediaz.presentation.core.Logger;
@@ -37,11 +39,13 @@ public class RecipesViewModel extends ViewModel {
 
     private final ObservableUseCase<Void, List<Recipe>> getRecipesUseCase;
     private final Logger logger;
+    private final AppResources appResources;
 
     @Inject
-    public RecipesViewModel(@GetRecipes ObservableUseCase<Void, List<Recipe>> getRecipesUseCase, Logger logger) {
+    public RecipesViewModel(@GetRecipes ObservableUseCase<Void, List<Recipe>> getRecipesUseCase, Logger logger, AppResources appResources) {
         this.getRecipesUseCase = getRecipesUseCase;
         this.logger = logger;
+        this.appResources = appResources;
     }
 
     public void onViewActive() {
@@ -85,8 +89,9 @@ public class RecipesViewModel extends ViewModel {
                 recipe.getPrimaryPictureUrl(),
                 recipe.getPrimaryPictureUrlMedium(),
                 recipe.getRating(),
-                recipe.getServings(),
-                recipe.getStyle(),
+                appResources.getString(R.string.recipe_minutes_time, recipe.getTime()),
+                recipe.getServings() > 0 ? String.valueOf(recipe.getServings()) : appResources.getString(R.string.servings_default_value),
+                recipe.getStyle().isEmpty() ? appResources.getString(R.string.style_default_value) : recipe.getStyle(),
                 recipe.getTitle(),
                 toNutritionalInformationList(recipe.getNutritionalInformationList()),
                 recipe.getIngredients(),

@@ -3,7 +3,7 @@ package com.jorgediaz.emeals.di.modules;
 import android.app.Application;
 import android.content.Context;
 
-import com.jorgediaz.emeals.core.interfaces.AppResources;
+import com.jorgediaz.presentation.core.AppResources;
 import com.jorgediaz.emeals.data.EMealsResources;
 
 import dagger.Binds;

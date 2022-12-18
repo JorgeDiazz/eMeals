@@ -13,7 +13,8 @@ public class RecipeUiModel implements Parcelable {
     private final String primaryPictureUrl;
     private final String primaryPictureUrlMedium;
     private final Double rating;
-    private final int servings;
+    private final String time;
+    private final String servings;
     private final String style;
     private final String title;
     private final List<NutritionalInformationUiModel> nutritionalInformationList;
@@ -21,11 +22,12 @@ public class RecipeUiModel implements Parcelable {
     private final List<String> instructions;
     private final SideRecipeUiModel sideRecipe;
 
-    public RecipeUiModel(int id, String primaryPictureUrl, String primaryPictureUrlMedium, Double rating, int servings, String style, String title, List<NutritionalInformationUiModel> nutritionalInformationList, List<String> ingredients, List<String> instructions, SideRecipeUiModel sideRecipe) {
+    public RecipeUiModel(int id, String primaryPictureUrl, String primaryPictureUrlMedium, Double rating, String time, String servings, String style, String title, List<NutritionalInformationUiModel> nutritionalInformationList, List<String> ingredients, List<String> instructions, SideRecipeUiModel sideRecipe) {
         this.id = id;
         this.primaryPictureUrl = primaryPictureUrl;
         this.primaryPictureUrlMedium = primaryPictureUrlMedium;
         this.rating = rating;
+        this.time = time;
         this.servings = servings;
         this.style = style;
         this.title = title;
@@ -51,7 +53,11 @@ public class RecipeUiModel implements Parcelable {
         return rating;
     }
 
-    public int getServings() {
+    public String getTime() {
+        return time;
+    }
+
+    public String getServings() {
         return servings;
     }
 
@@ -90,7 +96,8 @@ public class RecipeUiModel implements Parcelable {
         out.writeString(primaryPictureUrl);
         out.writeString(primaryPictureUrlMedium);
         out.writeDouble(rating);
-        out.writeInt(servings);
+        out.writeString(time);
+        out.writeString(servings);
         out.writeString(style);
         out.writeString(title);
         out.writeList(nutritionalInformationList);
@@ -104,7 +111,8 @@ public class RecipeUiModel implements Parcelable {
         primaryPictureUrl = in.readString();
         primaryPictureUrlMedium = in.readString();
         rating = in.readDouble();
-        servings = in.readInt();
+        time = in.readString();
+        servings = in.readString();
         style = in.readString();
         title = in.readString();
 

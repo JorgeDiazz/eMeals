@@ -6,25 +6,32 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.jorgediaz.presentation.R;
 import com.jorgediaz.presentation.core.EventObserver;
 import com.jorgediaz.presentation.databinding.FragmentRecipesBinding;
-import com.jorgediaz.presentation.ui.viewmodels.RecipesViewModel;
+import com.jorgediaz.presentation.ui.adapters.RecipesAdapter;
 import com.jorgediaz.presentation.ui.model.RecipeUiModel;
 import com.jorgediaz.presentation.ui.news.RecipesNews;
+import com.jorgediaz.presentation.ui.viewmodels.RecipesViewModel;
 
 import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
-public class RecipesFragment extends Fragment {
+public class RecipesFragment extends Fragment implements RecipesAdapter.OnRecipeClickListener {
 
     private FragmentRecipesBinding binding;
     private RecipesViewModel viewModel;
+    private RecyclerView recipesRecyclerView;
+    private RecipesAdapter recipesAdapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -43,7 +50,16 @@ public class RecipesFragment extends Fragment {
     }
 
     private void initializeView() {
+        initializeToolbar();
     }
+
+    private void initializeToolbar() {
+        ((AppCompatActivity) requireActivity()).setSupportActionBar(binding.mainToolbar.getToolbar());
+        binding.mainToolbar.styleToolbarWithLightTheme();
+        binding.mainToolbar.setTitle(getString(R.string.app_name));
+        binding.mainToolbar.setBackButton(false);
+    }
+
 
     private void initializeViewModel() {
         viewModel = new ViewModelProvider(this).get(RecipesViewModel.class);
@@ -55,7 +71,18 @@ public class RecipesFragment extends Fragment {
     }
 
     private void observeRecipesData(List<RecipeUiModel> recipeUiModelList) {
-        System.out.println("observeRecipesData " + recipeUiModelList.size());
+        setUpRecipesRecyclerView(recipeUiModelList);
+    }
+
+    private void setUpRecipesRecyclerView(List<RecipeUiModel> recipeUiModelList) {
+        recipesRecyclerView = binding.recyclerViewRecipes;
+        recipesAdapter = new RecipesAdapter(recipeUiModelList, this, getContext());
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recipesRecyclerView.setLayoutManager(linearLayoutManager);
+
+        recipesRecyclerView.setAdapter(recipesAdapter);
     }
 
     private void initializeSubscription() {
@@ -64,7 +91,7 @@ public class RecipesFragment extends Fragment {
 
     private void handleNews(RecipesNews recipesNews) {
         if (recipesNews instanceof RecipesNews.ErrorLoadingRecipes) {
-            Snackbar.make(binding.main, ((RecipesNews.ErrorLoadingRecipes) recipesNews).getMessage(), Snackbar.LENGTH_LONG).show();
+            Snackbar.make(binding.mainLayout, ((RecipesNews.ErrorLoadingRecipes) recipesNews).getMessage(), Snackbar.LENGTH_LONG).show();
         }
     }
 
@@ -72,5 +99,10 @@ public class RecipesFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onRecipeClicked(RecipeUiModel recipeUiModel) {
+
     }
 }

@@ -55,7 +55,8 @@ dependencies {
     implementation presentationDependencies.navigationUi
 
     implementation presentationDependencies.rxAndroid
-    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+
+    implementation presentationDependencies.fresco
 
     androidTestImplementation presentationTestDependencies.espressoCore
 }

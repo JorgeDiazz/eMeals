@@ -56,6 +56,7 @@ public class RecipesLocalDataSource implements IRecipesLocalDataSource {
         recipe.setPrimaryPictureUrl(recipeRoom.primaryPictureUrl);
         recipe.setPrimaryPictureUrlMedium(recipeRoom.primaryPictureUrlMedium);
         recipe.setRating(recipeRoom.rating);
+        recipe.setTime(recipeRoom.time);
         recipe.setServings(recipeRoom.servings);
         recipe.setStyle(recipeRoom.style);
         recipe.setTitle(recipeRoom.title);
@@ -101,6 +102,7 @@ public class RecipesLocalDataSource implements IRecipesLocalDataSource {
         recipeRoom.primaryPictureUrl = recipe.getPrimaryPictureUrl();
         recipeRoom.primaryPictureUrlMedium = recipe.getPrimaryPictureUrlMedium();
         recipeRoom.rating = recipe.getRating();
+        recipeRoom.time = recipe.getTime();
         recipeRoom.servings = recipe.getServings();
         recipeRoom.style = recipe.getStyle();
         recipeRoom.title = recipe.getTitle();

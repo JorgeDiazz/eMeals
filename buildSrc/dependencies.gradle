@@ -28,6 +28,8 @@ ext {
 
     room = "2.4.0-rc01"
 
+    fresco = "2.6.0"
+
     frameworkDependencies = [
             multidex                 : "androidx.multidex:multidex:${multidex}",
             daggerHilt               : "com.google.dagger:hilt-android:${daggerHilt}",
@@ -43,7 +45,8 @@ ext {
             room                     : "androidx.room:room-runtime:${room}",
             roomCompiler             : "androidx.room:room-compiler:${room}",
             roomRxJava               : "androidx.room:room-rxjava3:${room}",
-            retrofitRxJava           : "com.github.akarnokd:rxjava3-retrofit-adapter:${rxJava}"
+            retrofitRxJava           : "com.github.akarnokd:rxjava3-retrofit-adapter:${rxJava}",
+            fresco                   : "com.facebook.fresco:fresco:${fresco}"
     ]
 
     presentationDependencies = [
@@ -57,7 +60,8 @@ ext {
             kotlinMetadata           : "org.jetbrains.kotlinx:kotlinx-metadata-jvm:${kotlinMetadata}",
             navigationFragment       : "androidx.navigation:navigation-fragment:${navigationVersion}",
             navigationUi             : "androidx.navigation:navigation-ui:${navigationVersion}",
-            rxAndroid                : "io.reactivex.rxjava3:rxandroid:${rxJava}"
+            rxAndroid                : "io.reactivex.rxjava3:rxandroid:${rxJava}",
+            fresco                   : "com.facebook.fresco:fresco:${fresco}"
     ]
 
     presentationTestDependencies = [

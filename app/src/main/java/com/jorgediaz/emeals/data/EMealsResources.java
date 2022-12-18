@@ -5,12 +5,15 @@ import android.graphics.Color;
 
 import androidx.core.content.ContextCompat;
 
-import com.jorgediaz.emeals.core.interfaces.AppResources;
+import com.jorgediaz.presentation.core.AppResources;
+
+import javax.inject.Inject;
 
 public class EMealsResources implements AppResources {
 
     private final Context context;
 
+    @Inject
     public EMealsResources(Context context) {
         this.context = context;
     }

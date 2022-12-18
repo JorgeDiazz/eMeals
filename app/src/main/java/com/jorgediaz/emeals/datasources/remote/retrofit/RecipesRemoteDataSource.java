@@ -49,6 +49,7 @@ public class RecipesRemoteDataSource implements IRecipesRemoteDataSource {
         recipe.setPrimaryPictureUrl(recipeRemote.getMain().getPrimaryPictureUrl());
         recipe.setPrimaryPictureUrlMedium(recipeRemote.getMain().getPrimaryPictureUrlMedium());
         recipe.setRating(recipeRemote.getMain().getRating());
+        recipe.setTime(recipeRemote.getMain().getCookTime() + recipeRemote.getMain().getPrepTime());
         recipe.setServings(recipeRemote.getMain().getServings());
         recipe.setStyle(recipeRemote.getMain().getStyle());
         recipe.setTitle(recipeRemote.getMain().getTitle());

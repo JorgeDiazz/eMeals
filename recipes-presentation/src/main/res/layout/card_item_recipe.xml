@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_item_recipe"
+    android:layout_width="@dimen/width_card_large_100"
+    android:layout_height="@dimen/height_card_large_100"
+    android:layout_marginStart="@dimen/spacing_normal_600"
+    android:layout_marginEnd="@dimen/spacing_normal_100"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardCornerRadius="@dimen/radius_background_small_200">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/imageView_recipe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:foreground="@drawable/bg_fade_recipe_image"
+            android:scaleType="centerCrop"
+            app:placeholderImage="@drawable/ic_default_recipe"
+            app:placeholderImageScaleType="centerCrop"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/imageView_recipe_servings"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/spacing_small_800"
+            android:layout_marginTop="@dimen/spacing_normal_600"
+            android:src="@drawable/ic_people"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/textView_recipe_servings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small_400"
+            android:layout_marginTop="@dimen/spacing_normal_600"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal_200"
+            app:layout_constraintStart_toEndOf="@id/imageView_recipe_servings"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2" />
+
+        <ImageView
+            android:id="@+id/imageView_recipe_time"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/spacing_small_800"
+            android:layout_marginTop="@dimen/spacing_small_200"
+            android:src="@drawable/ic_clock"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView_recipe_servings"
+            app:tint="@color/white"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/textView_recipe_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small_400"
+            android:layout_marginTop="@dimen/spacing_small_200"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal_200"
+            app:layout_constraintStart_toEndOf="@id/imageView_recipe_time"
+            app:layout_constraintTop_toBottomOf="@id/textView_recipe_servings"
+            tools:text="30 min." />
+
+        <ImageView
+            android:id="@+id/imageView_recipe_rating"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="@dimen/spacing_normal_400"
+            android:layout_marginEnd="@dimen/spacing_small_200"
+            android:src="@drawable/ic_star"
+            app:layout_constraintEnd_toStartOf="@id/textView_recipe_rating"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/textView_recipe_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_normal_600"
+            android:layout_marginEnd="@dimen/spacing_small_800"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="4.3" />
+
+        <TextView
+            android:id="@+id/textView_recipe_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_small_800"
+            android:fontFamily="@font/poppins_semibold"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal_600"
+            app:layout_constraintBottom_toTopOf="@id/textView_recipe_style"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Grilled Salmon Salad" />
+
+        <TextView
+            android:id="@+id/textView_recipe_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_small_800"
+            android:layout_marginBottom="@dimen/spacing_normal_600"
+            android:fontFamily="@font/poppins_semibold"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal_400"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Clean Eating" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

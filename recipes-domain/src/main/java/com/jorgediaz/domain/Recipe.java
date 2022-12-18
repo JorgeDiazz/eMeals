@@ -7,6 +7,7 @@ public class Recipe {
     private String primaryPictureUrl;
     private String primaryPictureUrlMedium;
     private Double rating;
+    private int time;
     private int servings;
     private String style;
     private String title;
@@ -45,6 +46,14 @@ public class Recipe {
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
     }
 
     public int getServings() {
