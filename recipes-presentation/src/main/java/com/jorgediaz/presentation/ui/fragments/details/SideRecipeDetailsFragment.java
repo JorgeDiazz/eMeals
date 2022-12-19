@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
@@ -67,7 +66,6 @@ public class SideRecipeDetailsFragment extends DialogFragment {
 
 
     private void initializeToolbar() {
-        //((AppCompatActivity) requireActivity()).setSupportActionBar(binding.mainToolbar);
         binding.mainToolbar.setTitle(sideRecipeUiModel.getTitle());
 
         binding.mainToolbar.setNavigationIcon(ContextCompat.getDrawable(requireContext(), R.drawable.ic_arrow_back));

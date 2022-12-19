@@ -2,4 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.EMealsTest" parent="AppTheme.Main" />
 
+    <style name="Theme.App.NewSplashScreenTheme" parent="AppTheme.Main">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
 </resources>
