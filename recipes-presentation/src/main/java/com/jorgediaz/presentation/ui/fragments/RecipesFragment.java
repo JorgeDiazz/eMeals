@@ -20,6 +20,7 @@ import com.jorgediaz.presentation.R;
 import com.jorgediaz.presentation.core.EventObserver;
 import com.jorgediaz.presentation.databinding.FragmentRecipesBinding;
 import com.jorgediaz.presentation.ui.adapters.RecipesAdapter;
+import com.jorgediaz.presentation.ui.fragments.details.RecipeDetailsFragmentDirections;
 import com.jorgediaz.presentation.ui.model.RecipeUiModel;
 import com.jorgediaz.presentation.ui.news.RecipesNews;
 import com.jorgediaz.presentation.ui.viewmodels.RecipesViewModel;
@@ -63,7 +64,7 @@ public class RecipesFragment extends Fragment implements RecipesAdapter.OnRecipe
 
 
     private void initializeViewModel() {
-        viewModel = new ViewModelProvider(this).get(RecipesViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(RecipesViewModel.class);
         viewModel.onViewActive();
     }
 
@@ -93,6 +94,18 @@ public class RecipesFragment extends Fragment implements RecipesAdapter.OnRecipe
     private void handleNews(RecipesNews recipesNews) {
         if (recipesNews instanceof RecipesNews.ErrorLoadingRecipes) {
             Snackbar.make(binding.mainLayout, ((RecipesNews.ErrorLoadingRecipes) recipesNews).getMessage(), Snackbar.LENGTH_LONG).show();
+        } else if (recipesNews instanceof RecipesNews.ShowSideRecipeDetails) {
+            RecipeUiModel recipeUiModel = ((RecipesNews.ShowSideRecipeDetails) recipesNews).getRecipeUiModel();
+            showSideRecipeDetailsFragment(recipeUiModel);
+        }
+    }
+
+    private void showSideRecipeDetailsFragment(RecipeUiModel recipeUiModel) {
+        NavDirections action = RecipeDetailsFragmentDirections.actionRecipeDetailsFragmentToSideRecipeDetailsFragment(recipeUiModel);
+        NavDestination destination = Navigation.findNavController(binding.getRoot()).getCurrentDestination();
+
+        if (destination != null && destination.getId() == R.id.recipeDetailsFragment) {
+            Navigation.findNavController(binding.getRoot()).navigate(action);
         }
     }
 

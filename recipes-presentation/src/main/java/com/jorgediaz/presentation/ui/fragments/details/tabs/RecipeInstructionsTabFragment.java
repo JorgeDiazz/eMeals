@@ -1,4 +1,4 @@
-package com.jorgediaz.presentation.ui.fragments;
+package com.jorgediaz.presentation.ui.fragments.details.tabs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

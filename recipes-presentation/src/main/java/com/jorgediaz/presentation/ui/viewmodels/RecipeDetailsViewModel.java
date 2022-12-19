@@ -9,6 +9,7 @@ import com.jorgediaz.domain.qualifiers.UpdateRecipeTitle;
 import com.jorgediaz.presentation.core.BaseSingle;
 import com.jorgediaz.presentation.core.Event;
 import com.jorgediaz.presentation.core.Logger;
+import com.jorgediaz.presentation.ui.model.RecipeUiModel;
 import com.jorgediaz.presentation.ui.news.RecipeDetailsNews;
 import com.jorgediaz.usecases.interfaces.SingleUseCase;
 import com.jorgediaz.usecases.utils.Pair;
@@ -41,7 +42,7 @@ public class RecipeDetailsViewModel extends ViewModel {
                 .subscribe(new BaseSingle<String>() {
                     @Override
                     public void onSuccess(String newRecipeTitle) {
-                        RecipeDetailsNews news = new RecipeDetailsNews.RecipeTitleUpdatedSuccesfully(newRecipeTitle);
+                        RecipeDetailsNews news = new RecipeDetailsNews.RecipeTitleUpdatedSuccessfully(newRecipeTitle);
                         _news.setValue(new Event<>(news));
 
                         super.onSuccess(newRecipeTitle);
@@ -58,4 +59,6 @@ public class RecipeDetailsViewModel extends ViewModel {
                     }
                 });
     }
+
+
 }

@@ -1,6 +1,4 @@
-package com.jorgediaz.presentation.ui.fragments;
-
-import static com.jorgediaz.presentation.ui.FormatUtils.ONE_DECIMAL_FORMAT_PATTERN;
+package com.jorgediaz.presentation.ui.fragments.details.tabs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,28 +10,29 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.jorgediaz.presentation.R;
 import com.jorgediaz.presentation.databinding.FragmentRecipeSummaryTabBinding;
+import com.jorgediaz.presentation.databinding.FragmentSideRecipeSummaryTabBinding;
 import com.jorgediaz.presentation.ui.model.NutritionalInformationUiModel;
-import com.jorgediaz.presentation.ui.model.RecipeUiModel;
+import com.jorgediaz.presentation.ui.model.SideRecipeUiModel;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 
 
-public class RecipeSummaryTabFragment extends Fragment {
+public class SideRecipeSummaryTabFragment extends Fragment {
 
-    private static final String RECIPE_UI_MODEL_KEY = "RECIPE_UI_MODEL_KEY";
+    private static final String SIDE_RECIPE_UI_MODEL_KEY = "SIDE_RECIPE_UI_MODEL_KEY";
 
-    private FragmentRecipeSummaryTabBinding binding;
+    private FragmentSideRecipeSummaryTabBinding binding;
 
-    private RecipeUiModel recipeUiModel;
+    private SideRecipeUiModel sideRecipeUiModel;
 
-    public static RecipeSummaryTabFragment newInstance(RecipeUiModel recipeUiModel) {
+    public static SideRecipeSummaryTabFragment newInstance(SideRecipeUiModel sideRecipeUiModel) {
         Bundle args = new Bundle();
-        args.putParcelable(RECIPE_UI_MODEL_KEY, recipeUiModel);
+        args.putParcelable(SIDE_RECIPE_UI_MODEL_KEY, sideRecipeUiModel);
 
-        RecipeSummaryTabFragment fragment = new RecipeSummaryTabFragment();
+        SideRecipeSummaryTabFragment fragment = new SideRecipeSummaryTabFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -42,7 +41,7 @@ public class RecipeSummaryTabFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        binding = FragmentRecipeSummaryTabBinding.inflate(inflater, container, false);
+        binding = FragmentSideRecipeSummaryTabBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -54,21 +53,23 @@ public class RecipeSummaryTabFragment extends Fragment {
     }
 
     private void initializeProperties() {
-        recipeUiModel = requireArguments().getParcelable(RECIPE_UI_MODEL_KEY);
+        sideRecipeUiModel = requireArguments().getParcelable(SIDE_RECIPE_UI_MODEL_KEY);
     }
 
     private void initializeView() {
-        binding.textViewRecipeServings.setText(String.valueOf(recipeUiModel.getServings()));
-        binding.textViewRecipeTime.setText(String.valueOf(recipeUiModel.getTime()));
-        binding.textViewRecipeRating.setText(String.format(Locale.ENGLISH, ONE_DECIMAL_FORMAT_PATTERN, recipeUiModel.getRating()));
-
+        initializeSummaryTextViews();
         initializeNutritionalInformationView();
-        initializeSideRecipePreview();
+    }
+
+    private void initializeSummaryTextViews() {
+        binding.textViewRecipeServings.setText(String.valueOf(sideRecipeUiModel.getServings()));
+        binding.textViewRecipeTime.setText(getString(R.string.time_default_value));
+        binding.textViewRecipeRating.setText(getString(R.string.rating_default_value));
     }
 
     private void initializeNutritionalInformationView() {
         List<TextView> textViewNutritionalInformationList = Arrays.asList(binding.textViewNutritionalInformation1, binding.textViewNutritionalInformation2, binding.textViewNutritionalInformation3, binding.textViewNutritionalInformation4, binding.textViewNutritionalInformation5, binding.textViewNutritionalInformation6, binding.textViewNutritionalInformation7);
-        List<NutritionalInformationUiModel> nutritionalInformationUiModelList = recipeUiModel.getNutritionalInformationList();
+        List<NutritionalInformationUiModel> nutritionalInformationUiModelList = sideRecipeUiModel.getNutritionalInformationList();
 
         if (nutritionalInformationUiModelList.isEmpty()) {
             binding.flexboxNutritionalInformation.setVisibility(View.GONE);
@@ -81,10 +82,6 @@ public class RecipeSummaryTabFragment extends Fragment {
                 textView.setText(nutritionalInformationUiModel.toString());
             }
         }
-    }
-
-    private void initializeSideRecipePreview() {
-        binding.textViewRecommendedSideDishTitle.setText(recipeUiModel.getSideRecipe().getTitle());
     }
 
     @Override

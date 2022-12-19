@@ -73,6 +73,11 @@ public class RecipesViewModel extends ViewModel {
                 });
     }
 
+    public void showSideRecipeDetails(RecipeUiModel recipeUiModel) {
+        RecipesNews news = new RecipesNews.ShowSideRecipeDetails(recipeUiModel);
+        _news.setValue(new Event<>(news));
+    }
+
     private List<RecipeUiModel> toRecipeUiModelList(List<Recipe> recipes) {
         List<RecipeUiModel> recipeUiModelList = new ArrayList<>();
 

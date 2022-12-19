@@ -1,4 +1,4 @@
-package com.jorgediaz.presentation.ui.fragments;
+package com.jorgediaz.presentation.ui.fragments.details.tabs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,9 +9,11 @@ import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.jorgediaz.presentation.databinding.FragmentRecipeIngredientsTabBinding;
 import com.jorgediaz.presentation.ui.model.RecipeUiModel;
+import com.jorgediaz.presentation.ui.viewmodels.RecipeDetailsViewModel;
 
 
 public class RecipeIngredientsTabFragment extends Fragment {

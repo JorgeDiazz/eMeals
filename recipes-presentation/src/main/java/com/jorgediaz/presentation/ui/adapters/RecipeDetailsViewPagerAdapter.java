@@ -6,9 +6,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.jorgediaz.presentation.ui.fragments.RecipeIngredientsTabFragment;
-import com.jorgediaz.presentation.ui.fragments.RecipeInstructionsTabFragment;
-import com.jorgediaz.presentation.ui.fragments.RecipeSummaryTabFragment;
+import com.jorgediaz.presentation.ui.fragments.details.tabs.RecipeIngredientsTabFragment;
+import com.jorgediaz.presentation.ui.fragments.details.tabs.RecipeInstructionsTabFragment;
+import com.jorgediaz.presentation.ui.fragments.details.tabs.RecipeSummaryTabFragment;
+import com.jorgediaz.presentation.ui.fragments.details.tabs.SideRecipeSummaryTabFragment;
 import com.jorgediaz.presentation.ui.model.RecipeUiModel;
 
 public class RecipeDetailsViewPagerAdapter extends FragmentStateAdapter {
@@ -20,10 +21,12 @@ public class RecipeDetailsViewPagerAdapter extends FragmentStateAdapter {
     private static final int TOTAL_TABS = 3;
 
     private final RecipeUiModel recipeUiModel;
+    private final boolean sideRecipe;
 
-    public RecipeDetailsViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, RecipeUiModel recipeUiModel) {
+    public RecipeDetailsViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, RecipeUiModel recipeUiModel, boolean sideRecipe) {
         super(fragmentManager, lifecycle);
         this.recipeUiModel = recipeUiModel;
+        this.sideRecipe = sideRecipe;
     }
 
     @NonNull
@@ -31,7 +34,7 @@ public class RecipeDetailsViewPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case RECIPE_SUMMARY_TAB_INDEX:
-                return RecipeSummaryTabFragment.newInstance(recipeUiModel);
+                return sideRecipe ? SideRecipeSummaryTabFragment.newInstance(recipeUiModel.getSideRecipe()) : RecipeSummaryTabFragment.newInstance(recipeUiModel);
             case RECIPE_INGREDIENTS_TAB_INDEX:
                 return RecipeIngredientsTabFragment.newInstance(recipeUiModel);
             case RECIPE_INSTRUCTIONS_TAB_INDEX:

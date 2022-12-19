@@ -1,4 +1,4 @@
-package com.jorgediaz.presentation.ui.fragments;
+package com.jorgediaz.presentation.ui.fragments.details;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -89,6 +89,7 @@ public class RecipeDetailsFragment extends DialogFragment implements MenuProvide
         binding.toolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsingToolbarLayoutTitleColorNormal);
 
         binding.mainToolbar.inflateMenu(R.menu.menu_recipe_details_toolbar);
+
         binding.mainToolbar.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.action_edit_title) {
                 onEditTitleActionPressed();
@@ -118,7 +119,7 @@ public class RecipeDetailsFragment extends DialogFragment implements MenuProvide
 
     private void initializeTabLayout() {
         FragmentManager manager = requireActivity().getSupportFragmentManager();
-        RecipeDetailsViewPagerAdapter pageAdapter = new RecipeDetailsViewPagerAdapter(manager, getLifecycle(), recipeUiModel);
+        RecipeDetailsViewPagerAdapter pageAdapter = new RecipeDetailsViewPagerAdapter(manager, getLifecycle(), recipeUiModel, false);
         binding.viewPagerContent.setAdapter(pageAdapter);
 
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -185,8 +186,8 @@ public class RecipeDetailsFragment extends DialogFragment implements MenuProvide
     }
 
     private void handleNews(RecipeDetailsNews recipeDetailsNews) {
-        if (recipeDetailsNews instanceof RecipeDetailsNews.RecipeTitleUpdatedSuccesfully) {
-            String newRecipeTitle = ((RecipeDetailsNews.RecipeTitleUpdatedSuccesfully) recipeDetailsNews).getNewRecipeTitle();
+        if (recipeDetailsNews instanceof RecipeDetailsNews.RecipeTitleUpdatedSuccessfully) {
+            String newRecipeTitle = ((RecipeDetailsNews.RecipeTitleUpdatedSuccessfully) recipeDetailsNews).getNewRecipeTitle();
             updateRecipeTitle(newRecipeTitle);
         } else if (recipeDetailsNews instanceof RecipeDetailsNews.ErrorUpdatingRecipeTitle) {
             Snackbar.make(binding.mainLayout, ((RecipeDetailsNews.ErrorUpdatingRecipeTitle) recipeDetailsNews).getMessage(), Snackbar.LENGTH_LONG).show();

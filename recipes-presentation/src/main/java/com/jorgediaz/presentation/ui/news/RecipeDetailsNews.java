@@ -1,14 +1,16 @@
 package com.jorgediaz.presentation.ui.news;
 
+import com.jorgediaz.presentation.ui.model.RecipeUiModel;
+
 public abstract class RecipeDetailsNews {
     private RecipeDetailsNews() {
         // no-op by default
     }
 
-    public static final class RecipeTitleUpdatedSuccesfully extends RecipeDetailsNews {
+    public static final class RecipeTitleUpdatedSuccessfully extends RecipeDetailsNews {
         private final String newRecipeTitle;
 
-        public RecipeTitleUpdatedSuccesfully(String newRecipeTitle) {
+        public RecipeTitleUpdatedSuccessfully(String newRecipeTitle) {
             this.newRecipeTitle = newRecipeTitle;
         }
 

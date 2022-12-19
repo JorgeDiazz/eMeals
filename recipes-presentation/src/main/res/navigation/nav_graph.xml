@@ -21,12 +21,32 @@
 
     <dialog
         android:id="@+id/recipeDetailsFragment"
-        android:name="com.jorgediaz.presentation.ui.fragments.RecipeDetailsFragment"
+        android:name="com.jorgediaz.presentation.ui.fragments.details.RecipeDetailsFragment"
         android:label="fragment_recipe_details"
         tools:layout="@layout/fragment_recipe_details">
 
         <argument
             android:name="RecipeUiModel"
             app:argType="com.jorgediaz.presentation.ui.model.RecipeUiModel" />
+
+        <action
+            android:id="@+id/action_recipeDetailsFragment_to_sideRecipeDetailsFragment"
+            app:destination="@id/sideRecipeDetailsFragment">
+            <argument
+                android:name="RecipeUiModel"
+                app:argType="com.jorgediaz.presentation.ui.model.RecipeUiModel" />
+        </action>
+    </dialog>
+
+    <dialog
+        android:id="@+id/sideRecipeDetailsFragment"
+        android:name="com.jorgediaz.presentation.ui.fragments.details.SideRecipeDetailsFragment"
+        android:label="fragment_side_recipe_details"
+        tools:layout="@layout/fragment_side_recipe_details">
+
+        <argument
+            android:name="RecipeUiModel"
+            app:argType="com.jorgediaz.presentation.ui.model.RecipeUiModel" />
+
     </dialog>
 </navigation>

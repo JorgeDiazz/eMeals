@@ -19,7 +19,10 @@
     <dimen name="width_icon_small_250">35dp</dimen>
 
     <dimen name="width_card_normal_100">80dp</dimen>
+    <dimen name="width_card_normal_200">120dp</dimen>
+
     <dimen name="height_card_normal_100">80dp</dimen>
+    <dimen name="height_card_normal_200">120dp</dimen>
 
     <dimen name="width_card_large_100">300dp</dimen>
     <dimen name="height_card_large_100">400dp</dimen>
