@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDestination;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -104,6 +105,10 @@ public class RecipesFragment extends Fragment implements RecipesAdapter.OnRecipe
     @Override
     public void onRecipeClicked(RecipeUiModel recipeUiModel) {
         NavDirections action = RecipesFragmentDirections.actionRecipesFragmentToRecipeDetailsFragment(recipeUiModel);
-        Navigation.findNavController(binding.getRoot()).navigate(action);
+        NavDestination destination = Navigation.findNavController(binding.getRoot()).getCurrentDestination();
+
+        if (destination != null && destination.getId() == R.id.recipesFragment) {
+            Navigation.findNavController(binding.getRoot()).navigate(action);
+        }
     }
 }

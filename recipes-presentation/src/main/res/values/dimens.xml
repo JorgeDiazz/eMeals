@@ -3,7 +3,7 @@
     <dimen name="stroke_width_dots_small_100">1dp</dimen>
 
     <dimen name="elevation_toolbar_small_100">4dp</dimen>
-    <dimen name="elevation_card_small_100">5dp</dimen>
+    <dimen name="elevation_card_small_100">8dp</dimen>
 
     <dimen name="action_button_padding_small_100">4dp</dimen>
 
@@ -17,6 +17,9 @@
     <dimen name="width_icon_small_100">15dp</dimen>
     <dimen name="width_icon_small_200">30dp</dimen>
     <dimen name="width_icon_small_250">35dp</dimen>
+
+    <dimen name="width_card_normal_100">80dp</dimen>
+    <dimen name="height_card_normal_100">80dp</dimen>
 
     <dimen name="width_card_large_100">300dp</dimen>
     <dimen name="height_card_large_100">400dp</dimen>
@@ -70,4 +73,6 @@
     <dimen name="text_size_subtitle_1">16sp</dimen>
     <dimen name="text_size_subtitle_2">14sp</dimen>
     <dimen name="text_size_subtitle_3">12sp</dimen>
+
+    <dimen name="height_recipe_primary_image">350dp</dimen>
 </resources>

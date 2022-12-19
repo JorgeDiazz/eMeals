@@ -3,6 +3,8 @@ package com.jorgediaz.presentation.ui.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 public class NutritionalInformationUiModel implements Parcelable {
 
     private final String name;
@@ -25,6 +27,12 @@ public class NutritionalInformationUiModel implements Parcelable {
 
     public String getUnit() {
         return unit;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name.substring(0, 3) + ".\n" + value + unit;
     }
 
     @Override

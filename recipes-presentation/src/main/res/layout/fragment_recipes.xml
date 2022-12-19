@@ -5,7 +5,7 @@
     android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="@color/white">
 
     <com.jorgediaz.presentation.views.AppToolbar
         android:id="@+id/main_toolbar"
@@ -20,11 +20,11 @@
         android:id="@+id/textView_recipes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_normal_100"
+        android:layout_marginTop="@dimen/spacing_large_100"
         android:fontFamily="@font/poppins_bold"
         android:gravity="center"
         android:text="@string/recipes"
-        android:textColor="@color/white"
+        android:textColor="@color/green_sushi"
         android:textSize="@dimen/text_size_normal_600"
         app:layout_constraintTop_toBottomOf="@id/main_toolbar" />
 

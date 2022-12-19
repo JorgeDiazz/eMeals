@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">eMeals</string>
-    <string name="recipes">Recipes</string>
+    <string name="recipes">My Recipes</string>
 
     <string name="recipe_minutes_time">%1$d min.</string>
     <string name="servings_default_value">-</string>
     <string name="style_default_value">-</string>
     <string name="write_here">Write here</string>
     <string name="edit_recipe_title">Edit recipe title</string>
+    <string name="summary">Summary</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="instructions">Instructions</string>
+    <string name="nutrition_per_serving">Nutrition Per Serving</string>
+    <string name="recommended_side_dish">Recommended side dish</string>
+    <string name="see_more">See more</string>
+    <string name="no_nutritional_information_available">No nutritional information available!</string>
+    <string name="instruction_step">Step %1$d. %2$s</string>
 </resources>

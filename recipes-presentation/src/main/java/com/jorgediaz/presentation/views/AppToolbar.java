@@ -4,12 +4,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import androidx.annotation.MenuRes;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
@@ -19,7 +16,6 @@ import com.jorgediaz.presentation.databinding.AppToolbarBinding;
 public class AppToolbar extends LinearLayout {
 
     private final Toolbar toolbar;
-    private int toolbarMenuId = -1;
     private final int padding;
 
     public AppToolbar(Context context, AttributeSet attrs) {
@@ -32,7 +28,7 @@ public class AppToolbar extends LinearLayout {
         AppToolbarBinding binding = AppToolbarBinding.inflate(LayoutInflater.from(context), this, true);
         toolbar = binding.toolbarCustom;
 
-        setBackgroundResource(R.color.white);
+        setBackgroundResource(R.color.orange_outrageous);
 
         padding = getResources().getDimensionPixelSize(R.dimen.spacing_normal_600);
 
@@ -41,63 +37,27 @@ public class AppToolbar extends LinearLayout {
         setBackButton(showBackButton);
 
         styleToolbarWithLightTheme();
-        supportMultipleLinesTitle();
 
         attributes.recycle();
     }
 
     private void setPaddingForToolbar() {
-        if (toolbarMenuId != -1 && toolbar.getNavigationIcon() != null) {
-            toolbar.setPadding(0, 0, 0, 0);
-        } else if (toolbar.getNavigationIcon() != null) {
-            toolbar.setPadding(0, 0, padding, 0);
-        } else if (toolbarMenuId != -1) {
-            toolbar.setPadding(padding, 0, 0, 0);
-        } else {
-            toolbar.setPadding(padding, 0, padding, 0);
-        }
-    }
-
-    public void setToolbarMenu(@MenuRes int menuId) {
-        toolbar.getMenu().clear();
-        toolbar.inflateMenu(menuId);
-        toolbarMenuId = menuId;
-
-        setPaddingForToolbar();
+        toolbar.setPadding(padding, 0, padding, 0);
     }
 
     public void setTitle(String title) {
         setPaddingForToolbar();
-        supportMultipleLinesTitle();
 
         toolbar.setTitle(title == null ? "" : title);
     }
 
-    private void supportMultipleLinesTitle() {
-        for (int i = 0; i < toolbar.getChildCount(); i++) {
-            View child = toolbar.getChildAt(i);
-
-            if (child instanceof TextView) {
-                ((TextView) child).setSingleLine(false);
-            }
-        }
-    }
-
-    public void setSubtitle(String subtitle) {
-        toolbar.setSubtitle(subtitle == null ? "" : subtitle);
-    }
-
-    public void setOnMenuItemClickListener(Toolbar.OnMenuItemClickListener listener) {
-        toolbar.setOnMenuItemClickListener(listener);
-    }
-
     public void styleToolbarWithLightTheme() {
         setPaddingForToolbar();
-        setBackgroundResource(R.color.white);
+        setBackgroundResource(R.color.orange_outrageous);
 
         toolbar.setTitleTextAppearance(getContext(), R.style.AppToolbarTitleTextAppearance_Dark);
         if (toolbar.getNavigationIcon() != null) {
-            toolbar.getNavigationIcon().setTint(ContextCompat.getColor(getContext(), R.color.blue_dark));
+            toolbar.getNavigationIcon().setTint(ContextCompat.getColor(getContext(), R.color.white));
         }
         invalidate();
         requestLayout();
@@ -109,26 +69,11 @@ public class AppToolbar extends LinearLayout {
                 show ? ContextCompat.getDrawable(getContext(), R.drawable.ic_arrow_back) : null);
 
         if (toolbar.getNavigationIcon() != null) {
-            toolbar.getNavigationIcon().setTint(ContextCompat.getColor(getContext(), R.color.blue_dark));
+            toolbar.getNavigationIcon().setTint(ContextCompat.getColor(getContext(), R.color.white));
         }
-    }
-
-    public void setBackButtonListener(Runnable listener) {
-        toolbar.setNavigationOnClickListener(
-                v -> {
-                    listener.run();
-                });
     }
 
     public Toolbar getToolbar() {
         return toolbar;
-    }
-
-    public int getToolbarMenuId() {
-        return toolbarMenuId;
-    }
-
-    public int getPadding() {
-        return padding;
     }
 }

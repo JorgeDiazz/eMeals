@@ -30,6 +30,8 @@ ext {
 
     fresco = "2.6.0"
 
+    flexbox = "3.0.0"
+
     frameworkDependencies = [
             multidex                 : "androidx.multidex:multidex:${multidex}",
             daggerHilt               : "com.google.dagger:hilt-android:${daggerHilt}",
@@ -61,7 +63,8 @@ ext {
             navigationFragment       : "androidx.navigation:navigation-fragment:${navigationVersion}",
             navigationUi             : "androidx.navigation:navigation-ui:${navigationVersion}",
             rxAndroid                : "io.reactivex.rxjava3:rxandroid:${rxJava}",
-            fresco                   : "com.facebook.fresco:fresco:${fresco}"
+            fresco                   : "com.facebook.fresco:fresco:${fresco}",
+            flexbox                  : "com.google.android.flexbox:flexbox:${flexbox}"
     ]
 
     presentationTestDependencies = [

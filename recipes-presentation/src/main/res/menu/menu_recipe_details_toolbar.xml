@@ -5,6 +5,7 @@
         android:id="@+id/action_edit_title"
         android:icon="@drawable/ic_edit"
         android:title="@null"
+        app:iconTint="@color/white"
         app:showAsAction="always" />
 </menu>
 
