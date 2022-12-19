@@ -55,7 +55,13 @@ And these ones for production purposes:
 
 **_Sidenote:_** choose productionExternalDebug before executing the app
 
-## Using the app
+## Mockups
+
+<img src="docs/1_mockups.png"/>
+
+<img src="docs/2_mockups.png"/>
+
+## Final result
 
 ### Launching the app
 
