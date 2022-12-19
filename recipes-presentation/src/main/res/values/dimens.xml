@@ -78,4 +78,5 @@
     <dimen name="text_size_subtitle_3">12sp</dimen>
 
     <dimen name="height_recipe_primary_image">350dp</dimen>
+    <dimen name="height_scroll_default">500dp</dimen>
 </resources>

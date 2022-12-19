@@ -8,6 +8,7 @@ import com.jorgediaz.domain.NutritionalInformation;
 import com.jorgediaz.domain.Recipe;
 import com.jorgediaz.domain.SideRecipe;
 import com.jorgediaz.domain.qualifiers.GetRecipes;
+import com.jorgediaz.usecases.interfaces.ObservableUseCase;
 import com.jorgediaz.presentation.R;
 import com.jorgediaz.presentation.core.AppResources;
 import com.jorgediaz.presentation.core.BaseObserver;
@@ -17,7 +18,6 @@ import com.jorgediaz.presentation.ui.model.NutritionalInformationUiModel;
 import com.jorgediaz.presentation.ui.model.RecipeUiModel;
 import com.jorgediaz.presentation.ui.model.SideRecipeUiModel;
 import com.jorgediaz.presentation.ui.news.RecipesNews;
-import com.jorgediaz.usecases.interfaces.ObservableUseCase;
 
 import java.util.ArrayList;
 import java.util.List;

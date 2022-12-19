@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'dagger.hilt.android.plugin'
+    id 'de.mannodermaus.android-junit5' version '1.8.2.1'
 }
 
 android {
@@ -75,6 +76,8 @@ dependencies {
     implementation project(':recipes-domain')
 
     def frameworkDependencies = rootProject.ext.frameworkDependencies
+    def frameworkTestDependencies = rootProject.ext.frameworkTestDependencies
+
     implementation frameworkDependencies.multidex
     implementation frameworkDependencies.daggerHilt
     annotationProcessor frameworkDependencies.daggerHiltAndroidCompiler
@@ -97,4 +100,9 @@ dependencies {
     annotationProcessor frameworkDependencies.roomCompiler
 
     implementation frameworkDependencies.fresco
+
+    testImplementation frameworkTestDependencies.jUnit
+    testImplementation frameworkTestDependencies.jupiterApi
+    testRuntimeOnly frameworkTestDependencies.jupiterEngine
+    testImplementation frameworkTestDependencies.mockitoCore
 }

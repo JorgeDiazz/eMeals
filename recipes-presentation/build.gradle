@@ -61,5 +61,9 @@ dependencies {
 
     implementation presentationDependencies.flexbox
 
+    testImplementation presentationTestDependencies.jUnit
+    testImplementation presentationTestDependencies.jupiterApi
+    testRuntimeOnly presentationTestDependencies.jupiterEngine
+    testImplementation presentationTestDependencies.mockitoCore
     androidTestImplementation presentationTestDependencies.espressoCore
 }

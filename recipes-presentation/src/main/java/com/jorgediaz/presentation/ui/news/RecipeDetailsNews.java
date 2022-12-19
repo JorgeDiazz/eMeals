@@ -1,7 +1,5 @@
 package com.jorgediaz.presentation.ui.news;
 
-import com.jorgediaz.presentation.ui.model.RecipeUiModel;
-
 public abstract class RecipeDetailsNews {
     private RecipeDetailsNews() {
         // no-op by default
