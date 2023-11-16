@@ -1,6 +1,7 @@
 <img src="https://d3qrl2xm10iebd.cloudfront.net/img/style-guide/branding/emeals-logo-v3.svg" alt="eMeals"  width="300" height="120"/>
 
-# Welcome to Android EMeals Test!
+# Overview: eMeals (Android app)!
+Welcome to eMeals, an Android application that provides a delightful culinary experience. This app shows delectable recipes, ensuring you have a diverse selection at your fingertips.
 
 ## What's included
 
